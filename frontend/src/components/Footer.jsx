@@ -55,19 +55,19 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-serif font-bold mb-6 border-b border-white/10 pb-2">Programs</h3>
                         <ul className="space-y-3">
-                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
+                            <li><a href="https://swahilipothub.co.ke/programs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-primary/40 rounded-full mr-2 group-hover:bg-primary transition-colors"></span>
                                 Mombasa Tourism Innovation Hub
                             </a></li>
-                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
+                            <li><a href="https://swahilipothub.co.ke/programs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-primary/40 rounded-full mr-2 group-hover:bg-primary transition-colors"></span>
                                 Arts & Culture
                             </a></li>
-                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
+                            <li><a href="https://swahilipothub.co.ke/programs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-primary/40 rounded-full mr-2 group-hover:bg-primary transition-colors"></span>
                                 Entrepreneurship
                             </a></li>
-                            <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
+                            <li><a href="https://swahilipothub.co.ke/programs" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-primary/40 rounded-full mr-2 group-hover:bg-primary transition-colors"></span>
                                 Youth Mentorship
                             </a></li>
@@ -78,17 +78,17 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-serif font-bold mb-6 border-b border-white/10 pb-2">Quick Links</h3>
                         <ul className="space-y-3">
-                            <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
+                            <li><Link to="/" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-white/20 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                About Us
+                                Home
                             </Link></li>
-                            <li><Link to="/impact" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
+                            <li><a href="#venues" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-white/20 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                Our Impact
-                            </Link></li>
-                            <li><Link to="/team" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
+                                Our Venues
+                            </a></li>
+                            <li><Link to="/my-bookings" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-white/20 rounded-full mr-2 group-hover:bg-white transition-colors"></span>
-                                Our Team
+                                My Bookings
                             </Link></li>
                             <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors text-sm flex items-center group">
                                 <span className="w-1.5 h-1.5 bg-white/20 rounded-full mr-2 group-hover:bg-white transition-colors"></span>

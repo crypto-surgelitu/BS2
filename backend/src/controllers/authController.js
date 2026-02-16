@@ -1,6 +1,8 @@
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { sendEmail } from '../nodemailer-service/emailService.js';
+import { welcomeEmailTemplate } from '../nodemailer-service/emailTemplates.js';
 
 // Register user
 export const register = async (req, res) => {
@@ -25,6 +27,10 @@ export const register = async (req, res) => {
             email,
             password: hashedPassword
         });
+
+        // Send welcome email
+        const { subject, html } = welcomeEmailTemplate(name);
+        await sendEmail({ to: email, subject, html });
 
         // Generate token
         const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, {

@@ -25,6 +25,7 @@ function AppContent() {
                     <Route path="/admin" element={<AdminPanel />} />
                     <Route path="/admin/login" element={<AdminLogin />} />
                     <Route path="/dashboard" element={<SmartBookingDashboard />} />
+                    <Route path="/my-bookings" element={<SmartBookingDashboard />} />
                     {/* Add more routes here as we build them */}
                 </Routes>
             </main>

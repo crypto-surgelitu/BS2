@@ -13,7 +13,8 @@ const Navbar = () => {
     const links = [
         { name: 'Home', path: '/' },
         { name: 'Our Venues', path: '/venues' },
-        { name: 'My Bookings', path: '/my-bookings' },
+        { name: 'Dashboard', path: '/dashboard' },
+        { name: 'My Bookings', path: '/dashboard' },
     ];
 
     const handleLogout = async () => {

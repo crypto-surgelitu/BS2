@@ -2,7 +2,7 @@ import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { sendEmail } from '../nodemailer-service/emailService.js';
-//import { welcomeEmailTemplate } from '../nodemailer-service/emailTemplates.js';
+import { welcomeEmailTemplate } from '../nodemailer-service/emailTemplates.js';
 
 // Register user
 export const register = async (req, res) => {
@@ -38,6 +38,7 @@ export const register = async (req, res) => {
             token
         });
     } catch (error) {
+        console.error('Registration Error:', error);
         res.status(500).json({
             success: false,
             message: 'Error registering user',
@@ -59,7 +60,8 @@ export const login = async (req, res) => {
             });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        // ✅ Fixed: use password_hash instead of password
+        const isMatch = await bcrypt.compare(password, user.password_hash);
         if (!isMatch) {
             return res.status(401).json({
                 success: false,
@@ -77,7 +79,7 @@ export const login = async (req, res) => {
             token,
             user: {
                 id: user.id,
-                name: user.name,
+                name: user.full_name,   // ✅ Fixed: full_name instead of name
                 email: user.email,
                 role: user.role
             }

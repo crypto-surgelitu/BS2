@@ -1,47 +1,51 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import AdminPanel from './pages/AdminPanel'
-import AdminLogin from './pages/AdminLogin'
-import SmartBookingDashboard from './pages/SmartBookingDashboard'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { BookingProvider } from "./context/BookingContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-function AppContent() {
-    const location = useLocation();
-    const isNoLayoutPage = location.pathname === '/admin/login';
+// Pages
+import HomePage from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import SmartBookingDashboard from "./pages/SmartBookingDashboard";
+import AdminLogin from "./pages/AdminLogin";
+import AdminPanel from "./pages/AdminPanel";
 
-    return (
-        <div className="flex flex-col min-h-screen bg-[#FCF9F6] font-sans text-gray-900">
-            {!isNoLayoutPage && <Navbar />}
-            <main className="flex-grow">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/admin" element={<AdminPanel />} />
-                    <Route path="/admin/login" element={<AdminLogin />} />
-                    <Route path="/dashboard" element={<SmartBookingDashboard />} />
-                    <Route path="/my-bookings" element={<SmartBookingDashboard />} />
-                    {/* Add more routes here as we build them */}
-                </Routes>
-            </main>
-            {!isNoLayoutPage && <Footer />}
-        </div>
-    );
-}
+const App = () => {
+  return (
+    <AuthProvider>
+      <BookingProvider>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <Routes>
 
-function App() {
-    return (
-        <AuthProvider>
-            <Router>
-                <AppContent />
-            </Router>
-        </AuthProvider>
-    )
-}
+            {/* ── Public pages ── */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
 
-export default App
+            {/* ── Protected: regular users ── */}
+            <Route path="/booking" element={
+              <ProtectedRoute>
+                <SmartBookingDashboard />
+              </ProtectedRoute>
+            } />
+
+            {/* ── Protected: admin only ── */}
+            <Route path="/admin-panel" element={
+              <ProtectedRoute adminOnly>
+                <AdminPanel />
+              </ProtectedRoute>
+            } />
+
+            {/* ── Fallback ── */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+
+          </Routes>
+        </BrowserRouter>
+      </BookingProvider>
+    </AuthProvider>
+  );
+};
+
+export default App;

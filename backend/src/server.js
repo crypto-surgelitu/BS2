@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
-import roomRoutes from './routes/roomRoutes.js';
+import venueRoutes from './routes/venueRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/bookings', bookingRoutes);
-app.use('/api/rooms', roomRoutes);
+app.use('/api/venues', venueRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
